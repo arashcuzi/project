@@ -1,9 +1,7 @@
 // Require modules here
-var express = require('express');
-var bodyParser = require('body-parser');
-var glob = require('glob');
-
-var app = express();
+var express = require('express'),
+	bodyParser = require('body-parser'),
+	glob = require('glob');
 
 module.exports = function(app, config) {
 	// configuration of server here
@@ -25,8 +23,19 @@ module.exports = function(app, config) {
 		});
 
 	app.use(function (req, res, next) {
-		var err = new Error('Not Found');
+		var err = new Error('Not Found!');
 		err.status = 404;
-		
-	})
-}
+		next(err);
+	});
+
+	app.use(function (req, res, next) {
+		var err = new Error('Server Error!');
+		err.status = 500;
+		next(err);
+	});
+
+	app.use(function (err, req, res, next) {
+		res.status(err.status);
+		res.send(err.message || 'Something Broke!');
+	});
+};
