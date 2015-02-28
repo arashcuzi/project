@@ -1,9 +1,10 @@
 // Require modules here
 var express = require('express'),
 	bodyParser = require('body-parser'),
-	glob = require('glob');
+	glob = require('glob'),
+	mongoose = require('mongoose');
 
-module.exports = function(app, config) {
+module.exports = function (app, config) {
 	// configuration of server here
 	app.use(express.static(config.root + '/public'));
 
@@ -12,15 +13,21 @@ module.exports = function(app, config) {
 		extended: true
 	}));
 
+	mongoose.connect(config.db);
+	var db = mongoose.connection;
+	db.on('error', function () {
+		throw new Error('Unable to connect to database at ' + config.db);
+	});
+
 	var models = glob.sync(config.root + '/app/models/*.js');
-		models.forEach(function (model) {
-			require(model);
-		});
+	models.forEach(function (model) {
+		require(model);
+	});
 
 	var controllers = glob.sync(config.root + '/app/controllers/*.js');
-		controllers.forEach(function (controller) {
-			require(controller)(app);
-		});
+	controllers.forEach(function (controller) {
+		require(controller)(app);
+	});
 
 	app.use(function (req, res, next) {
 		var err = new Error('Not Found!');

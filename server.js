@@ -7,4 +7,4 @@ require('./config/express')(app, config);
 
 app.listen(config.port);
 
-console.log('Server listening at http://localhost:' + config.port);
+console.log('Server is running, good to go at port:' + config.port);

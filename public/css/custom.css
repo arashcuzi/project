@@ -1,0 +1,148 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 100;
+}
+
+.form-control:focus {
+    border-color: #cccccc;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.todo {
+  border: none;
+}
+
+.todo-table {
+  width: 30%;
+}
+
+.title {
+  background: #f5f5f5;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: none !important;
+    outline-style: none;
+}
+
+.navbar{
+    margin-bottom: 0px;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #dfdfdf;
+}
+
+.btn {
+    font-weight: 100;
+}
+
+#logo {
+    height: 100%;
+    display: inline;
+    margin-top: -3px;
+    margin-right: 15px;
+}
+
+.modal-dialog {
+    width: 400px;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+.margin-bottom-none {
+    margin-bottom: 0px !important;
+}
+.margin-bottom {
+    margin-bottom: 10px !important;
+}
+.margin-bottom-lg {
+    margin-bottom: 22px !important;
+}
+.margin-bottom-sm {
+    margin-bottom: 5px !important;
+}
+
+.cd-signin {
+    border: 1px white solid;
+    border-radius: 50px;
+    padding: .3em 1em;
+    color: white;
+}
+
+.cd-signup {
+    background: #337ab7;
+    border-radius: 50px;
+    padding: .3em 1em;
+    color: white;
+}
+
+.carousel {
+  margin-bottom: 0px;
+}
+
+.carousel-indicators li {
+  background-color: #999999;
+  border: none;
+}
+.carousel-indicators .active {
+  background-color: #337ab7;
+  border: none;
+}
+
+/*
+inspired from http://codepen.io/Rowno/pen/Afykb
+*/
+.carousel-fade .carousel-inner .item {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+/*
+WHAT IS NEW IN 3.3: "Added transforms to improve carousel performance in modern browsers."
+now override the 3.3 new styles for modern browsers & apply opacity
+*/
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .carousel-fade .carousel-inner > .item.next,
+    .carousel-fade .carousel-inner > .item.active.right {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.prev,
+    .carousel-fade .carousel-inner > .item.active.left {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.next.left,
+    .carousel-fade .carousel-inner > .item.prev.right,
+    .carousel-fade .carousel-inner > .item.active {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+}
