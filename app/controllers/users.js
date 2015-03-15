@@ -37,10 +37,10 @@ module.exports = function (app) {
 				password: req.body.password
 			}
 		}, function (err, user) {
-			if (err){
+			if (err) {
 				res.status(500).json(err);
 			} else {
-				res.status(201).json(user);
+				res.redirect('/todo.html');
 			}
 		});
 	});
@@ -78,7 +78,7 @@ module.exports = function (app) {
         	if (err) {
         		res.status(500).json(err);
         	} else {    	
-        		res.status(204).json('User deleted');		
+        		res.status(204).json('User has been deleted');
         	}
     	});
 	});

@@ -71,7 +71,7 @@ module.exports = function (app) {
 					if (err) {
 			  	    	res.status(500).json(err);
 			  	 	} else {
-			  	    	res.status(201).json(user);
+			  	    	res.status(204).json(user);
 			  		}
 			  	})
         	}
