@@ -51,7 +51,7 @@
 	    </nav>
 	    <div class="container todo-table text-center">
 			<h1>Shawn's ToDo List</h1>
-			<p>Go get things done!</p>
+			<p>Wonder what else there is to do...</p>
 			<div ng-controller="todoController" class="text-left">
 				<h4 class="list-group-item title">Example list 1</h4>
 				<div class="list-group-item" ng-repeat="todo in todos">
@@ -105,7 +105,7 @@
 	    			{"title":"Make another thing","done":false}
 	    		];
 
-    			$scope.addTodo = function(){
+    			$scope.addTodo = function () {
     				var newtodo = {
     					done: false,
     					title: $scope.newtodo
@@ -114,15 +114,15 @@
     				$scope.newtodo = "";
     			};
 
-    			$scope.clearCompleted = function(){
+    			$scope.clearCompleted = function () {
 
     			};
 
-    			$scope.removeTodo = function(start) {
+    			$scope.removeTodo = function (start) {
     				$scope.todos.splice(start, 1);
     			};
 
-    			$scope.move = function(index, direction) {
+    			$scope.move = function (index, direction) {
     				if (direction === "up") {
     					if (index === 0) {
     						return;

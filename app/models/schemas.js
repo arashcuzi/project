@@ -29,9 +29,9 @@ var userFields = {
 
 var userSchema = new Schema(userFields);
 
-todoSchema.methods.fullName = function () {
+userSchema.virtual('fullName').get(function () {
 	return this.name.fname + ' ' + this.name.lname;
-};
+});
 
 // create the users model and export it
 module.exports = mongoose.model('User', userSchema);

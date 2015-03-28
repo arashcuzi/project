@@ -1,0 +1,61 @@
+<!-- NAVBAR
+		================================================== -->
+	    <nav class="navbar navbar-inverse navbar-static-top">
+	      <div class="container">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="navbar-brand" href="#"><img id="logo" src="img/check.png">CheckMate</a>
+	        </div>
+	        <div id="navbar" class="navbar-collapse collapse">
+	          <ul class="nav navbar-nav navbar-right pull-right main-nav">
+	            <li><a href="index.html"><span class="cd-signup">Sign Out</span></a></li>
+	          </ul>
+	        </div>
+	      </div>
+	    </nav>
+
+<!-- Wrap the rest of the page in another container to center all the content. -->
+    <div class="container">
+<h1 class="text-center">Hello {{{user.fullName}}}</h1>
+<h3 class="text-center">You have {{{numberNotDone user.todoItems}}} items to do.</h3>
+<br>
+{{#if user.todoItems}}
+
+<table class="table table-hover table-responsive">
+  <thead>
+    <tr><th>Item</th><th>Date</th><th>Priority</th><th>Done</th></tr>
+  </thead>
+  <tbody>
+  	{{#each user.todoItems}}
+  		<tr>
+  			<td>{{{this.task}}}</td>
+  			<td>{{{formatDate this.dueDate}}}</td>
+  			<td>{{{this.priority}}}</td>
+  			<td><input class="done" type="checkbox" name="done" id={{{this._id}}} {{#if this.done}}checked{{/if}}></td>
+  		</tr>
+  	{{/each}}
+  </tbody>
+</table>
+{{else}}
+	<h3>You have no items on your ToDo list!</h3>
+{{/if}}
+<hr>
+<form action="/api/todo/{{{user._id}}}" method="post">
+<label>Task:</label>
+<input type="text" name="task">
+<label>Due Date:</label>
+<input type="date" name="dueDate" style="height: 29px;">
+<label>Priority:</label>
+<select name="priority">
+	<option>Low</option>
+	<option>Medium</option>
+	<option>High</option>
+</select>
+<button type="submit" class="btn btn-primary">New Item</button> 
+</form>
+</div><!-- /.container -->
