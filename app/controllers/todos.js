@@ -28,7 +28,7 @@ module.exports = function (app) {
 					if (err) {
 			  	    	res.status(500).json(err);
 			  	 	} else {
-			  	    	res.redirect('/todo')(user);
+			  	    	res.render('login', {'user': user});
 			  		}
 			  	})
 			}
