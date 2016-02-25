@@ -1,3 +1,1 @@
-project for bus adm 532
-
-A simple todo list app, written for MEAN stack...
+# imageuploadapp

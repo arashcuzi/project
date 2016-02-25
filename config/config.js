@@ -5,19 +5,21 @@ var path = require('path'),
 var config = {
 	development: {
 		root: rootPath,
+		uploadPath: './public/upload',
 		app: {
-			name: 'ToDo List'
+			name: 'Image List'
 		},
 		port: 3400,
-		db: 'mongodb://localhost/todo-development'
+		db: 'mongodb://localhost/image-development'
 	},
 	production: {
 		root: rootPath,
+		uploadPath: './public/upload',
 		app: {
-			name: 'ToDo List'
+			name: 'Image List'
 		},
 		port: 80,
-		db: 'mongodb://localhost/todo-production'
+		db: 'mongodb://localhost/image-production'
 	}
 };
 

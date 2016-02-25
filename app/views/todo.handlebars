@@ -1,6 +1,6 @@
 <!-- NAVBAR
 		================================================== -->
-	    <nav class="navbar navbar-inverse navbar-static-top">
+	    <nav class="navbar navbar-inverse navbar-static-top" id="mainnav">
 	      <div class="container">
 	        <div class="navbar-header">
 	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -9,11 +9,11 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="#"><img id="logo" src="img/check.png">CheckMate</a>
+	          <a class="navbar-brand"><span class="fa fa-eye"></span> VisualizeIt</a>
 	        </div>
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav navbar-right pull-right main-nav">
-	            <li><a href="index.html"><span class="cd-signup">Sign Out</span></a></li>
+	            <li><a href="/logout"><span class="cd-signup">Sign Out</span></a></li>
 	          </ul>
 	        </div>
 	      </div>
@@ -22,10 +22,11 @@
 <!-- Wrap the rest of the page in another container to center all the content. -->
     <div class="container">
 <h1 class="text-center">Hello {{{user.fullName}}}</h1>
+{{#if user.todoItems}}
 <h3 class="text-center">You have {{{numberNotDone user.todoItems}}} items to do.</h3>
 <br>
-{{#if user.todoItems}}
-
+<div class="row">
+<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
 <table class="table table-hover table-responsive">
   <thead>
     <tr><th>Item</th><th>Date</th><th>Priority</th><th>Done</th></tr>
@@ -42,20 +43,33 @@
   </tbody>
 </table>
 {{else}}
-	<h3>You have no items on your ToDo list!</h3>
+	<h3>Add a task to your ToDo list.</h3>
 {{/if}}
 <hr>
+</div>
+</div>
+<div class="row">
+<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
 <form action="/api/todo/{{{user._id}}}" method="post">
+<div class="form-group">
 <label>Task:</label>
-<input type="text" name="task">
+<input type="text" class="form-control" name="task" placeholder="Breakfast at Tiffany's">
+</div>
+<div class="form-group">
 <label>Due Date:</label>
-<input type="date" name="dueDate" style="height: 29px;">
+<input type="date" class="form-control" name="dueDate">
+</div>
+<div class="form-group">
 <label>Priority:</label>
-<select name="priority">
+<select name="priority" class="form-control">
 	<option>Low</option>
 	<option>Medium</option>
 	<option>High</option>
 </select>
+</div>
+<br>
 <button type="submit" class="btn btn-primary">New Item</button> 
 </form>
+</div>
+</div>
 </div><!-- /.container -->

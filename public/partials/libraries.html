@@ -1,0 +1,41 @@
+<div class='container'>
+	<div class='col-lg-8 col-lg-offset-2'>
+		<nav class='navbar navbar-default'>
+			<div class='navbar-header'>
+				<a class='navbar-brand' href='#'>{{user.name.fname}} {{user.name.lname}}'s Libraries</a>
+			</div>
+		</nav>
+
+		<div class="input-group libtit">
+	      <input id="newLibraryTitle" type="text" class="form-control" ng-model="newLibraryTitle" name="title" placeholder="New Library...">
+	      <span class="input-group-btn">
+	        <button class="btn btn-primary" type="button" ng-click="newLibrary()">Go!</button>
+	      </span>
+	    </div><!-- /input-group -->
+
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<table id="table" class="table table-striped files ng-cloak">
+					<thead>
+						<td>Library Name</td>
+						<td>Created on</td>
+						<td>Number of Images</td>
+						<td>Operations</td>
+					</thead>
+					<tbody>
+						<tr ng-repeat="library in user.libraries">
+						<td>{{library.title}}</td>
+						<td>{{library.createDate | amCalendar}}
+						<td>{{library.images.length}}</td>
+						<td class="text-muted">
+							<a ng-click="showLibrary(library)"><span class='glyphicon glyphicon-edit'></span></a>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a ng-click="deleteLibrary(library)"><span class="glyphicon glyphicon-remove"></span></a>
+						</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

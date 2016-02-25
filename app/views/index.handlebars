@@ -1,6 +1,6 @@
     <!-- NAVBAR
     ================================================== -->
-    <nav class="navbar navbar-inverse navbar-static-top">
+    <nav class="navbar navbar-inverse navbar-static-top" id="mainnav">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -9,12 +9,12 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#"><img id="logo" src="img/check.png">CheckMate</a>
+          <a class="navbar-brand"><span class="fa fa-eye"></span> VisualizeIt</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right pull-right main-nav">
-            <li><a href="#"><span class="cd-signin" data-toggle="modal" data-target="#signin">Sign In</span></a></li>
-            <li><a href="#"><span class="cd-signup" data-toggle="modal" data-target="#signup">Sign Up</span></a></li>
+            <li><a href="/login"><span class="cd-signin">Sign In</span></a></li>
+            <li><a href="/signup"><span class="cd-signup">Sign Up</span></a></li>
           </ul>
         </div>
       </div>
@@ -34,9 +34,9 @@
           <img src="img/carousel-1.jpg" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Organize your day</h1>
+              <h1>Organize your pics!</h1>
               <p>We know you're busy, let our software help!</p>
-              <p><a class="btn btn-lg btn-primary" href="#" data-toggle="modal" data-target="#signup">Sign up!</a></p>
+              <p><a class="btn btn-lg btn-primary" href="/signup">Sign up!</a></p>
             </div>
           </div>
         </div>
@@ -44,8 +44,8 @@
           <img src="img/carousel-2.jpg" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Make time for everything</h1>
-              <p>So you can focus on the goals that really matter to you!</p>
+              <h1>Make libraries for everything</h1>
+              <p>So you can focus on the pictures that really matter to you!</p>
               <p><a class="btn btn-lg btn-primary" href="#marketing">Learn more!</a></p>
             </div>
           </div>
@@ -54,9 +54,9 @@
           <img src="img/carousel-3.jpg" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Bring peace to the chaos</h1>
-              <p>Zen out while keeping your chores in check...how will you spend your free time?</p>
-              <p><a class="btn btn-lg btn-primary" href="#" data-toggle="modal" data-target="#signin">Sign In!</a></p>
+              <h1>Bring peace to your camera</h1>
+              <p>Zen out while keeping your pictures in check...how will you spend your free memory?</p>
+              <p><a class="btn btn-lg btn-primary" href="/login">Sign In!</a></p>
             </div>
           </div>
         </div>
@@ -80,20 +80,20 @@
       <div class="row text-center">
         <div class="col-lg-4">
           <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/rem/128.jpg" alt="Tyler Greg" style="width: 140px; height: 140px;">
-          <h2>Tyler Greg - CEO TooMuchTime, Inc.</h2>
-          <p>Thanks to CheckMate, I was able to organize my schedule better and the best part is, I had so much more time that I was able to pursue my dreams of launching a business. You should check out my company when you get a chance, it'll change your life too, like CheckMate changed mine!</p>
+          <h2>Tyler Greg - CEO TooManyPics, Inc.</h2>
+          <p>Thanks to VisualizeIt, I was able to organize my pictures better and the best part is, I had so much more space on my camera that I was able to pursue my dreams of launching a photography studio. You should check out my portfolio when you get a chance, it'll change your life too, like VisualizeIt changed mine!</p>
           <p><a class="btn btn-default" href="#" role="button">Read more &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/tonystubblebine/128.jpg" alt="Mike McGregor" style="width: 140px; height: 140px;">
-          <h2>Mike McGregor - Web Designer</h2>
-          <p>CheckMate changed my life! I've used every single type of to-do list on the market, but even my super cool hipster iPhone 6 doesn't have an app for that! CheckMate is the real deal, use it, and get things done! Whoo-Hoo!!</p>
+          <h2>Mike McGregor - Photographer</h2>
+          <p>VisualizeIt changed my life! I've used every single type of image library on the market, but even my super cool hipster iPhone 6 doesn't have an app for that! VisualizeIt is the real deal, use it, and get your pics organized! Whoo-Hoo!!</p>
           <p><a class="btn btn-default" href="#" role="button">Read more &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" src="https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg" alt="Jody Marx" style="width: 140px; height: 140px;">
-          <h2>Jody Marx, MBA - Marketing Director</h2>
-          <p>I was a waitress. I was never able to get anything done. Because of CheckMate, I was able to go back to school, get my MBA, get hired at a super cool and hip company, and now I'm making like 10 times what I used to! CheckMate was a lifesaver for me. Try it out! You won't be disappointed!.</p>
+          <h2>Jody Marx - Professional Picture-Taker</h2>
+          <p>I was a waitress. I was never able to take any pictures because my memory was always full! Because of VisualizeIt, I was able to get back to photography, take pictures of Spiderman, become a professional picture-taker for a cool company, and now I'm living the life! VisualizeIt was a lifesaver for me!</p>
           <p><a class="btn btn-default" href="#" role="button">Read more &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
@@ -105,8 +105,8 @@
 
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading">CheckMate uses the latest technology! <span class="text-muted">Mind-blowing!</span></h2>
-          <p class="lead">Using the latest in web technology, CheckMate will easily organize your life! CheckMate uses artificial intelligence that NASA developed back in the early 2000's but threw it out because they could never get it to work on the space shuttle. Well, that's the technology driving CheckMate! Believe us, it won't say no if you ask it to "open the pod bay doors!" Try it today!</p>
+          <h2 class="featurette-heading">VisualizeIt uses the latest technology! <span class="text-muted">Viewfinder-blowing!</span></h2>
+          <p class="lead">Using the latest in web technology, VisualizeIt will easily organize your pictures! VisualizeIt uses artificial intelligence that NASA developed back in the early 2000's but threw it out because it never listened to them. Well, that's the technology driving VisualizeIt! We made the software obey us and now you can too!</p>
         </div>
         <div class="col-md-5">
           <img class="featurette-image img-responsive" src="http://i.stack.imgur.com/c41gB.jpg" alt="Code image">
@@ -130,7 +130,7 @@
       <div class="row featurette">
         <div class="col-md-7">
           <h2 class="featurette-heading nice-heading">And as always, <span class="text-muted">Have Nice Day.</span></h2>
-          <p class="lead">This product is backed by actual Russians. Developed by people who do pretty good Russian accents after a couple shots of Vodka. Loved by people who want to be Russian. It's also hosted in, you guessed it, GERMANY! What, you think we could afford rackspace in the Kremlin?! We're not Google! We're just a small start up company with limited resources, we're also lucky that one of our co-founder's father works for a company that provides rackspace in Germany and that's why we're able to exist to bring you our amazing softwarez! W00T! L33T! H4X0RZ!!!1!one!!exclamationpoint!1!!111!!!</p>
+          <p class="lead">This product is backed by actual Russian photographers. Developed by people who do pretty good Russian accents while taking pictures. Loved by people who want to be Russian picture-takers. It's also hosted in, you guessed it, JAPAN! Ok, our product is none of that, but it's still pretty cool! We're not Flickr! We're just a small start up company with limited resources, we're also lucky that you, the professor, are going to give us an A in class because we're awesome like that! W00T! L33T! H4X0RZ!!!1!one!!exclamationpoint!1!!111!!!</p>
         </div>
         <div class="col-md-5">
           <img class="featurette-image img-responsive" src="http://ei.isnooth.com/multimedia/0/7/d/image_2504442_full.jpeg" alt="Russian pic">

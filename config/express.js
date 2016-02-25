@@ -4,16 +4,33 @@ var express = require('express'),
 	glob = require('glob'),
 	mongoose = require('mongoose'),
 	exphbs = require('express3-handlebars'),
-	moment = require('moment');
+	cookieParser = require('cookie-parser'),
+	session = require('express-session'),
+	passport = require('passport'),
+	LocalStrategy = require('passport-local').Strategy,
+	flash = require('connect-flash'),
+	moment = require('moment'),
+	multer = require('multer');
 
 module.exports = function (app, config) {
 	// configuration of server here
 	app.use(express.static(config.root + '/public'));
 
+	app.use(multer({
+		dest: config.uploadPath
+	}));
+
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({
 		extended: true
 	}));
+
+	app.use(cookieParser('monty-python-and-the-holy-grail'));
+	app.use(session({secret: 'montypythonholygrail'}));
+
+	app.use(passport.initialize());
+		app.use(passport.session());
+		app.use(flash());
 
 	mongoose.connect(config.db);
 	var db = mongoose.connection;
@@ -24,30 +41,28 @@ module.exports = function (app, config) {
 	app.set('views', config.root + '/app/views');
 		app.engine('handlebars', exphbs.create({
 			defaultLayout: 'main',
-			layoutsDir: app.get('views') + '/layouts',
-			helpers: {
-				numberNotDone: function (todoItems) {
-					var num = 0;
-					for (var i = 0; i < todoItems.length; i++) {
-						if (!todoItems[i].done) num += 1;
-					}
-					return num;
-				},
-				formatDate: function (date) {
-					return moment(date).format('MMMM Do YYYY, h:mm:ss a')
-				}
-			}
+			layoutsDir: app.get('views') + '/layouts'
 		}).engine);
-		app.set('view engine', 'handlebars');
+	app.set('view engine', 'handlebars');
 
 	var models = glob.sync(config.root + '/app/models/*.js');
 	models.forEach(function (model) {
 		require(model);
 	});
 
+	// passport
+	require('./passport')(passport);
+
+	app.use(function (req, res, next) {
+		if (req.session && req.session.passport) {
+			res.locals.userID = req.session.passport.user;
+		}
+		next();
+	});
+
 	var controllers = glob.sync(config.root + '/app/controllers/*.js');
 	controllers.forEach(function (controller) {
-		require(controller)(app);
+		require(controller)(app, passport);
 	});
 
 	app.use(function (req, res, next) {

@@ -1,0 +1,54 @@
+<div class="col-lg-8 col-lg-offset-2">
+	<nav class='navbar navbar-default'>
+		<div class='navbar-header'>
+			<a class='navbar-brand' href='#'>{{user.name.fname}} {{user.name.lname}}'s Libraries - Upload to {{library.title}}...</a>
+		</div>
+		<div class='nav navbar-right'>
+			<ul class="nav navbar-nav">
+				<li><a ng-click="displayModeChange('Libraries')"><span class="glyphicon glyphicon-arrow-left"</span></a></li>
+				<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="panel panel-default">
+		<div class='panel-body'>
+			<form enctype="multipart/form-data" method="post" name="picForm">
+				<div class="row fileupload-buttonbar">
+					<div class="col-lg-12">
+						<input id="file-input" class="file" accept="image/*" type="file" multiple onchange="angular.element(this).scope().filesChanged(this)" ng-click="btnUpload = true">
+							<script>
+							/* Initialize your widget via javascript as follows */
+							$("#file-input").fileinput({
+								browseClass: "btn btn-primary btn-block",
+								showCaption: false,
+								showRemove: false,
+								showUpload: false
+							});
+							</script>
+					</div>
+				</div>
+
+				<table id="table" class="table table-striped files ng-cloak">
+					<thead>
+						<td>File Name</td>
+						<td>Title</td>
+						<td>Description</td>
+					</thead>
+					<tbody>
+						<tr ng-repeat="file in files">
+						<td>{{file.name}}</td>
+						<td><input ng-model="file.title" required></td>
+						<td><input ng-model="file.description" required></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="modal-footer">
+					<button id="upload-button" type="button" class="btn btn-primary pull-right" ng-click="upload()" ng-disabled="picForm.$invalid" ng-show="btnUpload">
+						<span class="glyphicon glyphicon-upload"></span>&nbsp;Upload
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

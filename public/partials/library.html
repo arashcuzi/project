@@ -1,0 +1,51 @@
+<div class='container'>
+	<div class='col-lg-8 col-lg-offset-2'>
+		<nav class='navbar navbar-default'>
+			<div class='navbar-header'>
+				<a class='navbar-brand' href='#'>{{user.name.fname}} {{user.name.lname}}'s Libraries - {{library.title}}</a>
+			</div>
+			<div class='nav navbar-right'>
+				<ul class="nav navbar-nav">
+					<li><a ng-click="displayModeChange('Libraries')"><span class="glyphicon glyphicon-arrow-left"</span></a></li>
+					<li><a ng-click="displayModeChange('Upload')"><span class="glyphicon glyphicon-upload"</span></a></li>
+					<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="panel panel-default" ng-show="library.images.length === 0">
+			<div class="panel-body">
+				<h1>No images in {{library.title}}...</h1>
+			</div>
+		</div>
+		<div ng-show="library.images.length !== 0">
+			<div class="col-lg-8">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">{{image.title}}</h3>
+					</div>
+					<div class="panel-body">
+						<div class="thumbnail">
+							<img src="/upload/{{image.filename}}" />
+						</div>
+					</div>
+					<div class="panel-footer text-muted">
+						{{image.description}}<a href="#"><span class='glyphicon glyphicon-remove pull-right' ng-click='deleteImage(image)'></span></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">Other images in library</div>
+					<div class="panel-body">
+						<div ng-repeat="image in library.images">
+							<div class="thumbnail col-lg-3">
+								<img ng-click="selectedImage(image)" src="/upload/{{image.filename}}" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

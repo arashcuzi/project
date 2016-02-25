@@ -1,33 +1,60 @@
 var mongoose = require('mongoose'),
-	Schema = mongoose.Schema;
+	bcrypt = require('bcrypt-nodejs'),
+	Schema = mongoose.Schema,
+	path = require('path');
 
-var todoFields = {
-	task: { type: String, required: true },
-	dueDate: { type: Date, required: true },
-	done: { type: Boolean, default: false },
-	priority: { type: String, enum: ['High', 'Medium', 'Low'] },
-	dateEntered: { type: Date, default: Date.now }
-};
+var imageSchema = new Schema({
+	title: { type: String },
+	description: { type: String },
+	filename: { type: String },
+	timestamp: { type: Date, default: Date.now },
+});
 
-var todoSchema = new Schema(todoFields);
+module.exports = mongoose.model('Image', imageSchema);
 
-// export model for the todos controller
-module.exports = mongoose.model('Todo', todoSchema);
+var librarySchema = new Schema({
+	title: { type: String },
+	createDate: { type: Date, default: Date.now},
+	images: [ imageSchema ]
+});
 
-var userFields = {
-	name: {
-		fname: { type: String, required: true },
-		lname: { type: String, required: true }
+module.exports = mongoose.model('Library', librarySchema);
+
+var userSchema = new Schema({
+	name: { 
+		fname: { type: String },
+		lname: { type: String }
 	},
-	todoItems: [ todoSchema ],
-	registerDate: { type: Date, default: Date.now },
+	registerDate: { type: Date, default: Date.now},
+	libraries: [ librarySchema ],
 	local: {
-		email: { type: String, required: true },
-		password: { type: String, required: true },
+		email: { type: String },
+		password: { type: String },
+	},
+	twitter: {
+		id: { type: String },
+		token: { type: String },
+		displayName: { type: String },
+		username: { type: String }
+	},
+	facebook: {
+		id: { type: String },
+		token: { type: String },
+		email: { type: String },
+		name: { type: String }
 	}
+});
+
+// methods for user
+// methods ============
+userSchema.methods.generateHash = function (password) {
+	return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 
-var userSchema = new Schema(userFields);
+userSchema.methods.validPassword = function (password) {
+	return bcrypt.compareSync(password, this.local.password);
+};
+
 
 userSchema.virtual('fullName').get(function () {
 	return this.name.fname + ' ' + this.name.lname;
